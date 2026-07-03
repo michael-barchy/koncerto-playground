@@ -1,22 +1,18 @@
-<html>
+<html data-xhr-callback="Playground.xhrCallback">
 
 <head>
-    <script type="text/javascript" src="storage.js"></script>
-    <script type="text/javascript">
-        var phpSource = document.createElement('script');
-        phpSource.setAttribute('type', 'text/php');
-        phpSource.setAttribute('data-files', JSON.stringify(files));
-        phpSource.setAttribute('data-stdout', 'html');
-        phpSource.innerText = '<?php include("/preload/bootstrap.php");';
-
-        var phpWasm = document.createElement('script');
-        phpWasm.setAttribute('async', true);
-        phpWasm.setAttribute('type', 'module');
-        phpWasm.setAttribute('src', 'https://cdn.jsdelivr.net/npm/php-wasm/php-tags.mjs');
-
-        document.querySelector('head').appendChild(phpSource);
-        document.querySelector('head').appendChild(phpWasm);
+    <script data-reload="false" type="text/javascript">
+        var root = location.pathname;
+        var playground = root.split('/').shift();
+        root = '127.0.0.1' === location.hostname || 'localhost' === location.hostname ? '/' : playground;
+        document.write('<base href="' + root + '">');
     </script>
+    <script data-reload="false" type="text/javascript" src="scripts.js"></script>
+    <script data-reload="false" type="text/javascript" src="libs.js"></script>
+    <script data-reload="false" type="text/javascript" src="storage.js"></script>
+    <script data-reload="false" type="text/javascript" src="examples/index.js"></script>
+    <script data-reload="false" type="text/javascript" src="files.js"></script>
+    <script data-reload="false" type="module" src="bootstrap.js"></script>
 </head>
 
 </html>

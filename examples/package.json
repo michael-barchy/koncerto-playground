@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "build": "php --define phar.readonly=0 build.php"
+    }
+}

@@ -1,0 +1,44 @@
+<html>
+
+<head data-xhr="Playground.xhr">
+    <title>Tasks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <style>
+        [data-removed="true"] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container is-fluid px-0">
+        <div class="hero-body p-5">
+            <p class="title">Tasks</p>
+            <div class="columns is-vcentered" id="task-[tasks.id;block=div]" data-model="task-[tasks.id]-removed"
+                data-model-attr="data-removed" data-removed="false">
+                <div class="column is-narrow">
+                    <input type="checkbox" data-action="click->$live#toggle" value="1" [tasks.done;if
+                        [val]=1;then 'checked' ; else '' ] data-param-toggle="[tasks.id]"
+                        data-model="task-[tasks.id]-done">
+                </div>
+                <div class="column">
+                    <a href="[var._SERVER.APP_PREFIX]/task/view/?id=[tasks.id]" data-impulsus="false">[tasks.description]</a>
+                </div>
+                <div class="column is-narrow">
+                    <button class="button is-danger has-text-white" data-action="click->$live#remove"
+                        data-param-remove="[tasks.id]">Delete</button>
+                </div>
+            </div>
+            <p>
+                <a href="[var._SERVER.APP_PREFIX]/task/new/" data-impulsus="false" class="button is-primary has-text-white">Add</a>
+                <a href="?_bootstrap=/preload/bootstrap.php&_route=/examples/" data-impulsus="false" class="button">Back</a>
+            </p>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

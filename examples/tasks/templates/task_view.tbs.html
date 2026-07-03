@@ -1,0 +1,24 @@
+<html>
+
+<head data-xhr="Playground.xhr">
+    <title>Task #[task.id]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+</head>
+
+<body>
+
+    <div class="container is-fluid px-0">
+        <div class="hero-body p-5">
+            <p class="title">Task #[task.id]</p>
+            <div>
+                Description: [task.description]<br>
+                <a href="[var._SERVER.APP_PREFIX]/task/edit/?id=[task.id]" class="button is-primary has-text-white">Edit</a>
+                <a href="[var._SERVER.APP_PREFIX]/tasks/" class="button">Back</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

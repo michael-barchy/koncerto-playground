@@ -14,16 +14,22 @@ if (!is_file($lib)) {
 if (!is_file($lib)) {
     $lib = '/preload/koncerto.php';
 }
-require_once($lib);
+if (is_file($lib)) {
+    require_once($lib);
+}
 
 $lib = './tbs_class.php';
 if (!is_file($lib)) {
     $lib = '/preload/tbs_class.php';
 }
-require_once($lib);
+if (is_file($lib)) {
+    require_once($lib);
+}
 
 $koncerto = new Koncerto(array(
     'documentRoot' => is_dir('/preload') ? '/preload' : __DIR__,
+    'appPrefix' => isset($_SERVER['APP_PREFIX']) ? $_SERVER['APP_PREFIX'] : '',
+    'impulsus' => './impulsus/impulsus.js',
     'templateEngine' => 'Koncerto\\KoncertoTbsTemplate',
     'autoload' => array(
         'App\\' => './src/'

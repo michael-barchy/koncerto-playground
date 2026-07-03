@@ -1,5 +1,8 @@
 <?php
 
+if (!isset($_GET['file'])) {
+    new \Exception('Missing required file argument');
+}
 
 $file = '.' . $_GET['file'];
 
@@ -8,5 +11,5 @@ if (!is_file($file)) {
     exit();
 }
 
-header('Content-type: ' . mime_content_type($file));
+header('Content-type: ' . \mime_content_type($file));
 readfile($file);

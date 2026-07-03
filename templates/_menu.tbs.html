@@ -7,23 +7,26 @@
 </style>
 <nav class="navbar is-primary is-fixed-top is-flex" role="navigation" aria-label="main navigation">
     <div class="navbar-brand pr-2">
-        <a class="navbar-item p-0 pl-2 pr-2" href="https://michael-barchy.github.io/impulsus">
-            <img src="koncerto.png" height="100%">
+        <a class="navbar-item p-0 pl-2 pr-2" href="[var._SERVER.APP_PREFIX]/" data-impulsus="false">
+            <img src="koncerto.png" width="28" height="auto">
             <strong class="is-hidden-mobile">Playground</strong>
         </a>
     </div>
 
     <div class="navbar-menu is-active is-shadowless is-flex is-flex-grow-1 is-align-items-stretch p-0">
         <div class="navbar-start is-flex is-flex is-flex-grow-1">
-            <a href="./" class="navbar-item is-flex is-align-items-center">
+            <a href="[var._SERVER.APP_PREFIX]/" data-impulsus="false" class="navbar-item is-flex is-align-items-center">
                 Home
+            </a>
+            <a href="[var._SERVER.APP_PREFIX]/examples/" data-impulsus="false" data-navigate class="navbar-item is-flex is-align-items-center">
+                Examples
             </a>
         </div>
 
         <div class="navbar-end is-flex">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a href="https://github.com/michael-barchy/koncerto-playground" target="_blank" class="button is-light">
+                    <a href="https://github.com/michael-barchy/koncerto-playground" data-impulsus="false" target="_blank" class="button is-light">
                         <span class="icon">
                             <i class="la la-github"></i>
                         </span>

@@ -6,14 +6,14 @@ use Koncerto\KoncertoResponse;
 use Koncerto\KoncertoAnnotation as K;
 use Koncerto\KoncertoImpulsusController;
 
-class HomeController extends KoncertoImpulsusController
+class ExamplesController extends KoncertoImpulsusController
 {
     /**
-     * @see K::route() {"name": "/"}
+     * @see K::route() {"name": "/examples/"}
      * @return KoncertoResponse
      */
     public function index()
     {
-        return $this->render('templates/home.tbs.html');
+        return $this->render('templates/examples.tbs.html');
     }
 }

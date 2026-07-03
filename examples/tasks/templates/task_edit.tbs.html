@@ -1,0 +1,29 @@
+<html>
+
+<head data-xhr="Playground.xhr">
+    <title>Task #[task.id]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+</head>
+
+<body>
+
+    <div class="container is-fluid px-0">
+        <div class="hero-body p-5">
+            <p class="title">Task #<span data-model="id">[task.id;ifempty 'new']</span></p>
+            <div>
+                <div class="field">
+                    <label class="label">Description</label>
+                    <div class="control">
+                        <input class="input" type="text" value="[task.description]" data-model="description"><br>
+                    </div>
+                </div>
+                <button class="button is-primary has-text-white" type="button" data-action="click->$live#save" data-param-save="[task.id]">Save</button>
+                <a href="[var._SERVER.APP_PREFIX]/tasks/" class="button">Close</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

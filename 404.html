@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <!-- .htaccess FallbackResource -->
+        <script type="text/javascript">
+            var prefix = '/koncerto-playground';
+            var suffix = '/bootstrap.php';
+            var bootstrap = location.pathname;
+            if (0 === bootstrap.indexOf(prefix)) {
+                bootstrap = bootstrap.substring(prefix.length);
+            }
+            if (-1 !== location.pathname.lastIndexOf(suffix)) {
+                bootstrap = bootstrap.substring(0, bootstrap.lastIndexOf(suffix) + suffix.length);
+            } else {
+                bootstrap = '/preload/bootstrap.php';
+            }
+            var route = location.pathname;
+            if (0 === route.indexOf(prefix + bootstrap)) {
+                route = route.substring(prefix.length + bootstrap.length);
+            }
+            var url = new URL(location.href);
+            if (url.searchParams.get('_bootstrap') && url.searchParams.get('_route')) {
+                bootstrap = url.searchParams.get('_bootstrap');
+                route = url.searchParams.get('_route') ?? '/';
+            }
+            var path = prefix;
+            var url = new URL(location.href);
+            url.pathname = path;
+            url.searchParams.set('_bootstrap', bootstrap);
+            url.searchParams.set('_route', route);
+            location = url;
+        </script>
+    </head>
+</html>

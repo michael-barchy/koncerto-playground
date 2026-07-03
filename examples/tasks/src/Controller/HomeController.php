@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use Exception;
+use App\Entity\Task;
 use Koncerto\KoncertoResponse;
+use Koncerto\KoncertoController;
 use Koncerto\KoncertoAnnotation as K;
-use Koncerto\KoncertoImpulsusController;
 
-class HomeController extends KoncertoImpulsusController
+class HomeController extends KoncertoController
 {
     /**
      * @see K::route() {"name": "/"}
@@ -14,6 +16,6 @@ class HomeController extends KoncertoImpulsusController
      */
     public function index()
     {
-        return $this->render('templates/home.tbs.html');
+        return $this->render('templates/index.tbs.html');
     }
 }

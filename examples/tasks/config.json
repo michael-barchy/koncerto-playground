@@ -1,0 +1,12 @@
+{
+    "documentRoot": "%DOCUMENT_ROOT%",
+    "appPrefix": "%APP_PREFIX%",
+    "impulsus": "%IMPULSUS%",
+    "templateEngine": "Koncerto\\KoncertoTbsTemplate",
+    "entityManager": {
+        "default": "sqlite:///%DB_PATH%/db.sqlite"
+    },
+    "autoload": {
+        "App\\": "src"
+    }
+}
