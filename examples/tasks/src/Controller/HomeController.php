@@ -2,9 +2,6 @@
 
 namespace App\Controller;
 
-use Exception;
-use App\Entity\Task;
-use Koncerto\KoncertoResponse;
 use Koncerto\KoncertoController;
 use Koncerto\KoncertoAnnotation as K;
 

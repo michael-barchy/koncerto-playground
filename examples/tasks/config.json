@@ -4,7 +4,7 @@
     "impulsus": "%IMPULSUS%",
     "templateEngine": "Koncerto\\KoncertoTbsTemplate",
     "entityManager": {
-        "default": "sqlite:///%DB_PATH%/db.sqlite"
+        "default": "sqlite://%DB_PATH%/tasks.sqlite"
     },
     "autoload": {
         "App\\": "src"

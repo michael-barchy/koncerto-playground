@@ -12,4 +12,5 @@ if (!is_file($file)) {
 }
 
 header('Content-type: ' . \mime_content_type($file));
+header('Content-disposition: attachment; filename="' . basename($file) . "'");
 readfile($file);
