@@ -5,11 +5,21 @@ import libs from './libs.mjs';
 let files = [];
 let php;
 
+self.addEventListener('install', (event) => {
+    console.debug('install');
+    self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+    console.debug('activate');
+    event.waitUntil(self.clients.claim());
+});
+
 self.addEventListener('install', event => php && php.handleInstallEvent(event));
 self.addEventListener('activate', event => php && php.handleActivateEvent(event));
 self.addEventListener('fetch', event => php && php.handleFetchEvent(event));
 self.addEventListener('message', event => {
-    console.debug(event);
+
     if (event.data && event.data.storage) {
         const proxy = event.data.proxy ?? '';
 
@@ -26,8 +36,6 @@ self.addEventListener('message', event => {
         });
 
         console.debug(files);
-
-        return;
     }
 
     if (event.data && true == event.data.init) {
@@ -41,23 +49,11 @@ self.addEventListener('message', event => {
             prefix: baseHref + 'preload',
             rewrite: (path) => baseHref + 'preload/bootstrap.php',
             sharedLibs: libs,
-            files: files,
-            onLoaded: (php) => {
-                console.debug('onLoaded', php);
-            }
+            files: files
         });
 
         console.debug(php);
 
-        return;
+        event.source.postMessage({ ready: true });
     }
-    php && php.handleMessageEvent(event)
-});
-
-self.addEventListener('install', (event) => {
-    self.skipWaiting();
-});
-
-self.addEventListener('activate', (event) => {
-    event.waitUntil(self.clients.claim());
 });

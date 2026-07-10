@@ -12,10 +12,31 @@ const r = await navigator.serviceWorker.register(SERVICE_WORKER_SCRIPT_URL, {
 });
 r.update();
 
-navigator.serviceWorker.addEventListener('message', onMessage);
+navigator.serviceWorker.addEventListener('message', async (event) => {
+    if (event.data && event.data.ready) {
+        const url = new URL(location.href);
+        if (-1 === new String(url.pathname).indexOf('/preload')) {
+            if (!url.pathname.endsWith('/')) url.pathname += '/';
+            url.pathname = url.pathname + 'preload';
+        }
+
+        if (url.searchParams.has('_route')) {
+            url.pathname += url.searchParams.get('_route');
+            url.searchParams.delete('_route');
+        }
+
+        const f = await fetch(url.toString(), { cache: 'no-store' });
+        document.querySelector(':root').innerHTML = await f.text();
+
+        history.replaceState({}, null, url.toString());
+
+        return;
+    }
+
+    onMessage(event);
+});
 
 const sendMessage = sendMessageFor(SERVICE_WORKER_SCRIPT_URL);
-
 
 const bootstrap = async (r) => {
     const root = new URL(location.href);
@@ -27,24 +48,7 @@ const bootstrap = async (r) => {
     const storage = (document.querySelector('script#bootstrap').getAttribute('data-storage') ?? '').split(',');
     const proxy = document.querySelector('script#bootstrap').getAttribute('data-proxy') ?? root.toString();
 
-    r.active.postMessage({storage, proxy});
-    r.active.postMessage({init: true});
-
-    const url = new URL(location.href);
-    if (-1 === new String(url.pathname).indexOf('/preload')) {
-        if (!url.pathname.endsWith('/')) url.pathname += '/';
-        url.pathname = url.pathname + 'preload';
-    }
-
-    if (url.searchParams.has('_route')) {
-        url.pathname += url.searchParams.get('_route');
-        url.searchParams.delete('_route');
-    }
-
-    const f = await fetch(url.toString(), { cache: 'no-store' });
-    document.querySelector(':root').innerHTML = await f.text();
-
-    history.replaceState({}, null, url.toString());
+    r.active.postMessage({storage, proxy, init: true});
 }
 
 const timeout = setTimeout(() => bootstrap(r), 2000);

@@ -21,7 +21,7 @@
         storage.push('templates/home.tbs.html');
         storage.push('templates/examples.tbs.html');
 
-        var proxy = ['localhost', '127.0.0.1'].includes(location.hostname) ? ('./source.php?refresh=' + new Date().getTime() + '&file=') : 'https://cdn.jsdelivr.net/gh/michael-barchy/koncerto-playground@e4a510786d56ed415a237c133daa82d020d76cba';
+        var proxy = ['localhost', '127.0.0.1'].includes(location.hostname) ? ('./source.php?refresh=' + new Date().getTime() + '&file=') : 'https://cdn.jsdelivr.net/gh/michael-barchy/koncerto-playground@ddb637350d82834e5cb2e1224aa3fced7e014b92';
         document.write('<script id="bootstrap" type="module" src="' + baseHref + 'bootstrap.mjs" data-storage="' + storage.join(',') + '" data-proxy="' + proxy + '"><' + '/script>');
     </script>
 </head>
