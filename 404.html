@@ -1,0 +1,11 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var url = new URL(location.href);
+            var route = url.pathname.replace('/koncerto-playground/preload/', '/');
+            url.searchParams.set('_route', route);
+            url.pathname = '/koncerto-playground';
+            location = url;
+        </script>
+    </head>
+</html>
