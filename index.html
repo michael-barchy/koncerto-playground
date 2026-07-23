@@ -1,6 +1,8 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
     <script type="text/javascript">
         var root = location.pathname;
         var baseHref = root.substring(1).split('/').shift();
@@ -25,5 +27,9 @@
         document.write('<script id="bootstrap" type="module" src="' + baseHref + 'bootstrap.mjs" data-storage="' + storage.join(',') + '" data-proxy="' + proxy + '"><' + '/script>');
     </script>
 </head>
+
+<body>
+    <button class="button is-ghost is-large is-fullwidth is-loading" style="height: 100vh;">Loading</button>
+</body>
 
 </html>
