@@ -48,22 +48,26 @@ if (!is_file($lib)) {
 if (!is_file($lib)) {
     $lib = '../koncerto/koncerto.php';
 }
+if (!is_file($lib)) {
+    $lib = './vendor/michael-barchy/koncerto/koncerto.php';
+}
 if (is_file($lib)) {
     require_once($lib);
 }
 
 $lib = './tbs_class.php';
 if (!is_file($lib)) {
-    $lib = './vendor/tinybutstrong/tbs_class.php';
+    $lib = './vendor/tinybutstrong/tinybutstrong/tbs_class.php';
 }
 if (is_file($lib)) {
-    require_once('tbs_class.php');
+    require_once($lib);
 }
 
 $koncerto = new Koncerto(array(
     'documentRoot' => __DIR__,
     'appPrefix' => $_SERVER['APP_PREFIX'],
     'templateEngine' => 'Koncerto\\KoncertoTbsTemplate',
+    'impulsus' => '/impulsus/impulsus.js',
     'autoload' => array(
         'App\\' => './src/'
     )
